@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        .content {
+            max-width: 1140px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .card {
+            border: 1px solid #000;
+            padding: 16px;
+            text-align: center;
+            background: rgb(165, 238, 204);
+            width: 48%;
+        }
+
+        .img {
+            width: 75%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content"></div>
+    <script src="json.js"></script>
+    <script>
+        const data = JSON.parse(dataList);
+
+        data.forEach(element => {
+            const cardEl = document.createElement('div');
+            const contentEl = document.querySelector('.content');
+            const imgEl = document.createElement('img');
+            const headEl = document.createElement('h3');
+            const descrEl = document.createElement('p');
+            const dateEl = document.createElement('p');
+            const lincEl = document.createElement('a');
+
+            cardEl.classList.add('card');
+            headEl.textContent = element.title;
+            descrEl.textContent = element.explanation;
+            lincEl.href = element.url;
+            imgEl.src = element.url;
+            imgEl.alt = element.title;
+            imgEl.classList.add('img');
+            dateEl.textContent = element.date;
+
+            contentEl.appendChild(cardEl);
+            cardEl.appendChild(headEl);
+            cardEl.appendChild(lincEl);
+            lincEl.appendChild(imgEl);
+            cardEl.appendChild(lincEl);
+            cardEl.appendChild(descrEl);
+            cardEl.appendChild(dateEl);
+        });
+    </script>
+</body>
+
+</html>

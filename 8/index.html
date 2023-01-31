@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="ulList">
+        <li class="liList">Element of list 1</li>
+        <li class="liList">Element of list 2</li>
+        <li class="liList">Element of list 3</li>
+    </ul>
+    <button class="myButton">Add element</button>
+
+    <script>
+        // Создать в html список состоящий из 3 - х произвольных элементов li
+        // Нужно создать кнопку которая будет добавлять элементы списка с текстом “новый элемент списка”
+        // Создать кнопку, которая будет удалять первый элемент из созданного списка
+        // Создать кнопку, при клике на которую ей добавляется - убирается класс “click”
+
+        const elementOfList = document.querySelector('.ulList');
+        const firstButton = document.querySelector('.myButton');
+        let count = 0;
+        firstButton.addEventListener('click', function (e) {
+            elementOfList.insertAdjacentHTML('beforeend', `<li class="newList">Added a new element of list ${++count}</li>`);
+        });
+
+        firstButton.insertAdjacentHTML('afterend', '<br>');
+
+        const brTagElement = document.querySelector('br');
+
+        brTagElement.insertAdjacentHTML('afterend', '<button class="myButton2">Delete a new element of list</button>');
+
+        const secondButton = document.querySelector('.myButton2');
+
+        secondButton.addEventListener('click', function (e) {
+            if (document.querySelector('.newList')) {
+                const newList = document.querySelector('.newList');
+                newList.remove();
+            }
+        });
+
+        secondButton.insertAdjacentHTML('afterend', '<div class = "div"></div>');
+
+        const divElement = document.querySelector('.div');
+        const thirdButton = document.createElement('button');
+
+        thirdButton.setAttribute('class', 'myButton3');
+
+        thirdButton.textContent = 'Add / Remove class';
+        divElement.appendChild(thirdButton);
+
+        thirdButton.addEventListener('click', function (e) {
+            thirdButton.classList.toggle("click");
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>
